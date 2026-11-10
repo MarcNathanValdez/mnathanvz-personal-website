@@ -20,6 +20,7 @@
    17. Resume viewer (js/resume-viewer.js)
    18. YouTube projects + note
    19. About (photo, skill cards) + FAQ
+   20. Mascot "Bit" (js/mascot.js)
    ================================================================= */
 
 
@@ -2498,4 +2499,415 @@ body.is-leaving .site-footer {
 
 .about-body .eyebrow {
   color: var(--accent);
+}
+
+
+/* ---------- 20. Mascot "Bit" ---------- */
+.mascot {
+  --m-body: #e9ecf1;
+  --m-line: #1a1d22;
+  --m-glow: #8e9cff;
+  position: fixed;
+  left: 0;
+  bottom: calc(6px + env(safe-area-inset-bottom, 0px));
+  z-index: 35;
+  width: 70px;
+  pointer-events: none; /* only the robot itself is clickable */
+}
+
+[data-theme="dark"] .mascot {
+  --m-body: #d6dae0;
+  --m-line: #0b0d10;
+}
+
+.mascot-figure {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  pointer-events: auto;
+  transform: scaleX(var(--dir, 1));
+  transition: transform 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mascot-figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  transform-origin: 50% 100%;
+  transform: scale(0);
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.25));
+}
+
+.mascot.is-here .mascot-figure svg {
+  animation:
+    mascot-pop 0.6s cubic-bezier(0.34, 1.6, 0.64, 1) forwards,
+    mascot-breathe 3s ease-in-out 0.6s infinite;
+}
+
+@keyframes mascot-pop {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+@keyframes mascot-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02, 0.98); }
+}
+
+/* Parts */
+.m-part {
+  fill: var(--m-body);
+  stroke: var(--m-line);
+  stroke-width: 2.5;
+}
+
+.m-line {
+  stroke: var(--m-line);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.m-bulb {
+  fill: var(--m-glow);
+  stroke: var(--m-line);
+  stroke-width: 2;
+  animation: bulb-blink 2.4s ease-in-out infinite;
+}
+
+@keyframes bulb-blink {
+  0%, 100% { fill: var(--m-glow); }
+  50% { fill: #ffffff; }
+}
+
+.m-screen {
+  fill: #101317;
+}
+
+.m-chest {
+  fill: none;
+  stroke: var(--m-glow);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.m-leg,
+.m-arm,
+.m-head {
+  transform-box: fill-box;
+}
+
+.m-leg,
+.m-arm {
+  transform-origin: 50% 0;
+}
+
+.m-head {
+  transform-origin: 50% 100%;
+}
+
+/* Face: only the parts for the current mood are shown */
+.m-eyes,
+.m-mouth,
+.m-blush {
+  display: none;
+}
+
+.m-eyes ellipse {
+  fill: var(--m-glow);
+}
+
+.m-eyes path {
+  fill: none;
+  stroke: var(--m-glow);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.m-mouth {
+  fill: none;
+  stroke: var(--m-glow);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.m-mouth-laugh,
+.m-mouth-o {
+  fill: var(--m-glow);
+  stroke: none;
+}
+
+.m-blush {
+  fill: #ff7aa8;
+  opacity: 0.75;
+}
+
+/* default */
+.mascot:not([data-mood]) .m-eyes-normal,
+.mascot[data-mood=""] .m-eyes-normal,
+.mascot[data-mood="curious"] .m-eyes-normal,
+.mascot:not([data-mood]) .m-mouth-smile,
+.mascot[data-mood=""] .m-mouth-smile {
+  display: inline;
+}
+
+/* eyes follow the mouse + blink */
+.m-eyes-normal {
+  transform: translate(var(--look-x, 0), var(--look-y, 0));
+  transition: transform 0.15s ease-out;
+}
+
+.m-eyes-normal ellipse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: blink 4.5s infinite;
+}
+
+@keyframes blink {
+  0%, 94%, 100% { transform: scaleY(1); }
+  97% { transform: scaleY(0.1); }
+}
+
+/* curious */
+.mascot[data-mood="curious"] .m-mouth-o { display: inline; }
+.mascot[data-mood="curious"] .m-head { animation: tilt 2.2s ease-in-out; }
+
+@keyframes tilt {
+  30%, 70% { transform: rotate(-10deg); }
+}
+
+/* laugh */
+.mascot[data-mood="laugh"] .m-eyes-happy,
+.mascot[data-mood="laugh"] .m-mouth-laugh,
+.mascot[data-mood="laugh"] .m-blush { display: inline; }
+.mascot[data-mood="laugh"] .mascot-figure svg { animation: laugh 0.35s ease-in-out infinite; }
+
+@keyframes laugh {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  25% { transform: translateY(-4px) rotate(-4deg); }
+  75% { transform: translateY(-4px) rotate(4deg); }
+}
+
+/* angry */
+.mascot[data-mood="angry"] { --m-glow: #ff5c5c; }
+.mascot[data-mood="angry"] .m-eyes-angry,
+.mascot[data-mood="angry"] .m-mouth-angry { display: inline; }
+.mascot[data-mood="angry"] .m-eyes-angry ellipse { fill: #ff5c5c; }
+.mascot[data-mood="angry"] .m-eyes-angry path { stroke: #ff5c5c; }
+.mascot[data-mood="angry"] .m-head { animation: shake 0.12s linear infinite; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-1.5px); }
+  75% { transform: translateX(1.5px); }
+}
+
+/* love */
+.mascot[data-mood="love"] .m-eyes-love,
+.mascot[data-mood="love"] .m-mouth-smile,
+.mascot[data-mood="love"] .m-blush { display: inline; }
+.mascot[data-mood="love"] .m-eyes-love path { fill: #ff4d8d; stroke: none; }
+.mascot[data-mood="love"] .mascot-figure svg { animation: love 0.8s ease-in-out infinite; }
+
+@keyframes love {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.08); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.06); }
+}
+
+/* sleep */
+.mascot[data-mood="sleep"] .m-eyes-sleep,
+.mascot[data-mood="sleep"] .m-mouth-smile { display: inline; }
+.mascot[data-mood="sleep"] .m-bulb { animation: none; fill: #3a414b; }
+.mascot[data-mood="sleep"] .m-head { transform: rotate(8deg); transition: transform 0.6s; }
+
+/* walking */
+.mascot.is-walking .m-leg-l { animation: step 0.42s ease-in-out infinite; }
+.mascot.is-walking .m-leg-r { animation: step 0.42s ease-in-out infinite reverse; }
+.mascot.is-walking .m-arm-l { animation: swing 0.42s ease-in-out infinite reverse; }
+.mascot.is-walking .m-arm-r { animation: swing 0.42s ease-in-out infinite; }
+.mascot.is-walking .mascot-figure svg { animation: bob 0.21s ease-in-out infinite alternate; }
+
+@keyframes step {
+  0%, 100% { transform: rotate(18deg); }
+  50% { transform: rotate(-18deg); }
+}
+
+@keyframes swing {
+  0%, 100% { transform: rotate(14deg); }
+  50% { transform: rotate(-14deg); }
+}
+
+@keyframes bob {
+  to { transform: translateY(-2px); }
+}
+
+/* waving */
+.mascot.is-waving .m-arm-r { animation: wave 0.4s ease-in-out infinite alternate; }
+
+@keyframes wave {
+  from { transform: rotate(-150deg); }
+  to { transform: rotate(-190deg); }
+}
+
+/* jumping */
+.mascot.is-jumping .mascot-figure svg { animation: jump 0.9s cubic-bezier(0.3, 0, 0.3, 1); }
+
+@keyframes jump {
+  0%, 100% { transform: translateY(0) scale(1); }
+  15% { transform: translateY(0) scale(1.1, 0.85); }
+  50% { transform: translateY(-34px) scale(0.95, 1.05); }
+  85% { transform: translateY(0) scale(1.1, 0.9); }
+}
+
+/* Speech bubble */
+.mascot-bubble {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  width: max-content;
+  max-width: 210px;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.35;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateX(calc(-50% + var(--shift, 0px))) translateY(6px) scale(0.9);
+  transform-origin: bottom center;
+  transition: opacity 0.2s, transform 0.3s cubic-bezier(0.34, 1.5, 0.64, 1);
+  pointer-events: none;
+}
+
+.mascot-bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: calc(50% - var(--shift, 0px));
+  margin-left: -6px;
+  border: 6px solid transparent;
+  border-top-color: var(--surface);
+}
+
+.mascot.is-talking .mascot-bubble {
+  opacity: 1;
+  transform: translateX(calc(-50% + var(--shift, 0px))) translateY(0) scale(1);
+}
+
+/* Floating effects */
+.mascot-fx {
+  position: absolute;
+  left: 50%;
+  top: 0;
+}
+
+.m-fx {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 800;
+  opacity: 0;
+  pointer-events: none;
+  animation: float-fx 1.4s ease-out forwards;
+}
+
+.m-fx-love { color: #ff4d8d; font-size: 1.1rem; }
+.m-fx-laugh { color: var(--accent); font-size: 0.8rem; font-stretch: 125%; }
+.m-fx-sleep { color: var(--muted); font-size: 0.9rem; animation-duration: 2.2s; }
+
+.m-fx-angry {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #b8bec7;
+}
+
+@keyframes float-fx {
+  0% { opacity: 0; transform: translate(-50%, 0) scale(0.6); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--dx, 0px)), -60px) scale(1.2); }
+}
+
+@media (max-width: 560px) {
+  .mascot {
+    width: 56px;
+  }
+
+  .mascot-bubble {
+    max-width: 170px;
+    font-size: 0.75rem;
+  }
+}
+
+/* Bit hides behind the hero logo / profile photo and peeks over the top edge */
+.hero-mark,
+.profile-frame {
+  position: relative;
+}
+
+.peek {
+  position: absolute;
+  bottom: calc(100% - 2px);
+  z-index: 1;
+  width: 60px;
+  transform: translateX(-50%);
+}
+
+.peek-clip {
+  position: relative;
+  height: 50px;
+  overflow: hidden; /* the part of Bit "behind" the edge stays hidden */
+}
+
+.mascot.mascot-peeking {
+  position: relative;
+  left: auto;
+  bottom: auto;
+  z-index: auto;
+  width: 60px;
+  pointer-events: auto;
+  transform: translateY(105%);
+  transition: transform 0.5s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.peek.is-up .mascot.mascot-peeking {
+  transform: translateY(0);
+}
+
+.mascot-peeking .mascot-figure svg {
+  transform: none;
+  animation: none;
+  filter: none;
+}
+
+.peek.is-talking .mascot-bubble {
+  opacity: 1;
+  transform: translateX(calc(-50% + var(--shift, 0px))) translateY(0) scale(1);
+}
+
+/* Peeking from behind a box elsewhere on the page */
+.peek.peek-on-page {
+  bottom: auto;
+  z-index: 30;
+  transform: translate(-50%, -100%);
+}
+
+/* The walking Bit while it's off hiding */
+.mascot.is-gone {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.mascot.is-gone .mascot-figure {
+  transform: scaleX(var(--dir, 1)) translateY(40px);
 }

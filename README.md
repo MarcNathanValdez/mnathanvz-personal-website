@@ -17,6 +17,7 @@ js/code-effects.js         Floating code symbols + self-typing code editor
 js/portfolio.js            Builds the portfolio grid (you rarely need to touch this)
 js/data/portfolio-data.js  YOUR PROJECT LIST — edit this to add/remove work
 js/contact.js              Contact form behavior
+js/mascot.js               “Bit”, the little robot that walks along the bottom of every page
 js/resume-viewer.js        View-only resume pop-up (no download button)
 js/vendor/pdfjs/           PDF.js, draws the resume pages (don't edit)
 js/file-check.js           Finds each file in /assets (or the live-site copy), hides it if gone
@@ -85,6 +86,7 @@ You don't have to edit any code. The line in `js/data/portfolio-data.js` can sta
 - **Change the entrance screen:** timing and motion are in `css/style.css` section 16; how long it stays is `INTRO_DURATION` in `js/intro.js`. To see it again, close the tab and reopen the site.
 - **Entrance sound:** change `VOLUME` at the top of `js/intro-sound.js` (0 = silent, 1 = loud).
 - **Edit the About text, skill cards or FAQ:** all in `index.html` (search for `ABOUT` or `FAQ`). Copy an `<li class="skill-card">` or a `<details class="faq-item">` block to add one.
+- **The robot (Bit):** its lines are at the top of `js/mascot.js` (`teases` and `reactions`). Set `enabled: false` there to remove it. `hidingSpots` sets where it hides and peeks out, and `peekChance` how often.
 - **Change the typing words:** in `index.html`, edit `data-typed="..."` (comma separated).
 - **Add a certificate or tool:** add an `<li>` in the matching list in `index.html`.
 
