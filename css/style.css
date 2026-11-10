@@ -19,6 +19,7 @@
    16. Entrance screen (js/intro.js)
    17. Resume viewer (js/resume-viewer.js)
    18. YouTube projects + note
+   19. About (photo, skill cards) + FAQ
    ================================================================= */
 
 
@@ -552,10 +553,12 @@ body::before {
     grid-template-columns: 1fr;
   }
 
+  /* Phone/tablet: logo sits centered above the text, smaller */
   .hero-mark {
     order: -1;
-    width: min(60%, 260px);
-    justify-self: start;
+    width: clamp(150px, 46vw, 220px);
+    justify-self: center;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -2210,4 +2213,289 @@ body.is-leaving .site-footer {
 /* Only one project in the list: no previous/next arrows */
 .lightbox-nav[hidden] {
   display: none;
+}
+
+
+/* ---------- 19. About (photo, skill cards) + FAQ ---------- */
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* Profile photo: framed, with a location label */
+.profile-photo {
+  position: relative;
+  aspect-ratio: auto;
+  overflow: visible;
+  background: none;
+  box-shadow: none;
+  padding-bottom: 1.25rem;
+}
+
+.profile-frame {
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.profile-frame img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.location-pill {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  background: #16191d;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.6);
+}
+
+.location-pill svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+/* Phone: smaller photo, centered */
+@media (max-width: 760px) {
+  .profile-photo {
+    width: min(78%, 300px);
+    max-width: none;
+    margin-inline: auto;
+  }
+}
+
+/* About text */
+.about-body .eyebrow + h2 {
+  margin-top: -0.75rem;
+  max-width: 18ch;
+}
+
+.about-body > p:not(.eyebrow) {
+  font-size: 1.05rem;
+}
+
+/* Skill cards */
+.skill-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-card {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+}
+
+.reveal.is-visible .skill-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.skill-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+}
+
+.skill-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.skill-card h3 {
+  font-size: 1rem;
+  font-stretch: 105%;
+  font-weight: 700;
+}
+
+.skill-card p {
+  margin-top: 0.2rem;
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+
+@media (max-width: 560px) {
+  .skill-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Freelance / full-time */
+.availability {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.availability li {
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+/* FAQ */
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: var(--space-l);
+  align-items: start;
+}
+
+.faq-head {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.faq-head h2 {
+  font-size: var(--step-3);
+}
+
+.faq-head > p:last-child {
+  color: var(--muted);
+}
+
+.faq-head a {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+.faq-list {
+  padding: 0.25rem 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--surface);
+}
+
+.faq-item + .faq-item {
+  border-top: 1px solid var(--line);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  font-weight: 600;
+  font-size: 1.05rem;
+  list-style: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary:hover {
+  color: var(--accent);
+}
+
+/* Round +/× button */
+.faq-toggle {
+  position: relative;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg);
+  transition: transform 0.35s var(--ease-out), background-color 0.2s;
+}
+
+.faq-toggle::before,
+.faq-toggle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 1.5px;
+  margin: -0.75px 0 0 -6px;
+  border-radius: 1px;
+  background: currentColor;
+}
+
+.faq-toggle::after {
+  transform: rotate(90deg);
+}
+
+.faq-item[open]:not(.is-closing) .faq-toggle {
+  transform: rotate(45deg);
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.faq-answer {
+  overflow: hidden;
+}
+
+.faq-answer p {
+  padding: 0 2.5rem 1.25rem 0;
+  color: var(--muted);
+}
+
+@media (max-width: 860px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-m);
+  }
+
+  .faq-list {
+    padding: 0.25rem 1.1rem;
+  }
+
+  .faq-answer p {
+    padding-right: 0;
+  }
+}
+
+.about-body .eyebrow {
+  color: var(--accent);
 }

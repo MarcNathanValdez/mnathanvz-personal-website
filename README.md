@@ -84,6 +84,7 @@ You don't have to edit any code. The line in `js/data/portfolio-data.js` can sta
 - **Make a list appear item by item:** add the class `stagger` to it.
 - **Change the entrance screen:** timing and motion are in `css/style.css` section 16; how long it stays is `INTRO_DURATION` in `js/intro.js`. To see it again, close the tab and reopen the site.
 - **Entrance sound:** change `VOLUME` at the top of `js/intro-sound.js` (0 = silent, 1 = loud).
+- **Edit the About text, skill cards or FAQ:** all in `index.html` (search for `ABOUT` or `FAQ`). Copy an `<li class="skill-card">` or a `<details class="faq-item">` block to add one.
 - **Change the typing words:** in `index.html`, edit `data-typed="..."` (comma separated).
 - **Add a certificate or tool:** add an `<li>` in the matching list in `index.html`.
 

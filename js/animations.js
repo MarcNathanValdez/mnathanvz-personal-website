@@ -8,6 +8,7 @@
  *  5. Staggered lists: children of  .stagger  appear one by one
  *  6. 3D tilt on elements with  data-tilt
  *  7. Ripple when a button is clicked
+ *  8. FAQ answers slide open and closed
  *
  * Every effect turns off for people who choose "reduce motion".
  * ---------------------------------------------------------------
@@ -180,6 +181,39 @@ function initRipple() {
   });
 }
 
+/* ---------- 8. FAQ accordion ---------- */
+function initAccordions() {
+  document.querySelectorAll("details.faq-item").forEach((item) => {
+    const summary = item.querySelector("summary");
+    const answer = item.querySelector(".faq-answer");
+
+    summary.addEventListener("click", (event) => {
+      if (motionOff) return; // let the browser open/close it instantly
+      event.preventDefault();
+
+      if (item.open) {
+        // Closing: shrink, then actually close
+        item.classList.add("is-closing");
+        const closing = answer.animate(
+          [{ height: `${answer.scrollHeight}px`, opacity: 1 }, { height: "0px", opacity: 0 }],
+          { duration: 280, easing: "ease" }
+        );
+        closing.onfinish = () => {
+          item.open = false;
+          item.classList.remove("is-closing");
+        };
+      } else {
+        // Opening: open, then grow from 0 to full height
+        item.open = true;
+        answer.animate(
+          [{ height: "0px", opacity: 0 }, { height: `${answer.scrollHeight}px`, opacity: 1 }],
+          { duration: 380, easing: "cubic-bezier(0.16, 1, 0.3, 1)" }
+        );
+      }
+    });
+  });
+}
+
 /* ---------- Start ---------- */
 initPageTransitions();
 initScrollUI();
@@ -187,3 +221,4 @@ initScramble();
 initStagger();
 initTilt();
 initRipple();
+initAccordions();

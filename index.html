@@ -177,28 +177,71 @@
     <!-- ========== ABOUT ========== -->
     <section class="section about" id="about">
       <div class="container about-grid">
-        <figure class="profile-photo reveal" data-tilt data-file="assets/images/profile/profile-img.png">
-          <img src="assets/images/profile/profile-img.png" alt="Portrait of Marc Nathaniel Valdez">
+        <figure class="profile-photo reveal" data-file="assets/images/profile/profile-img.png">
+          <div class="profile-frame" data-tilt>
+            <img src="assets/images/profile/profile-img.png" alt="Portrait of Marc Nathaniel Valdez">
+          </div>
+          <figcaption class="location-pill">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            Philippines · GMT+8
+          </figcaption>
         </figure>
 
         <div class="about-body reveal">
-          <h2>About me</h2>
+          <p class="eyebrow">About Marc</p>
+          <h2>An IT mind with a creator’s eye</h2>
           <p>
-            I’m an IT graduate from Caloocan City who works across design, video and the web —
-            from social media graphics and email templates to ads, reels and full websites.
+            I’m Marc, an IT graduate from Our Lady of Fatima University who designs graphics,
+            edits videos and builds websites, and keeps the tech behind them running.
+          </p>
+          <p>
+            I’ve made social media graphics, logos and email templates for brands like Entikis
+            Bookkeeping and Saikicks, edited training videos for PSPACE’s aviation lessons and built
+            client websites on GoHighLevel. My customer service work at AFNI and Concentrix taught me
+            the other half: patience, clear communication and keeping every request on track.
+          </p>
+          <p>
+            I’m solution-oriented and detail-minded, and I pick up new tools quickly, from Adobe and
+            Canva to AI tools like ChatGPT and Amazon Polly.
           </p>
 
-          <!-- Personal details: add or remove a <div> to change the list -->
-          <dl class="details stagger">
-            <div><dt>Birthday</dt><dd>17 June 2000</dd></div>
-            <div><dt>Age</dt><dd data-age-from="2000-06-17">26</dd></div>
-            <div><dt>City</dt><dd>Caloocan City, Metro Manila</dd></div>
-            <div><dt>Course</dt><dd>BS Information Technology</dd></div>
-            <div><dt>Phone</dt><dd><a href="tel:+639760681812">+63 976 068 1812</a></dd></div>
-            <div><dt>Email</dt><dd><a href="mailto:marcnathanvaldez@gmail.com">marcnathanvaldez@gmail.com</a></dd></div>
-            <div><dt>Freelance</dt><dd class="status-available">Available</dd></div>
-            <div><dt>Full-time</dt><dd class="status-available">Available</dd></div>
-          </dl>
+          <!-- Skill cards: copy an <li> to add one -->
+          <ul class="skill-cards stagger">
+            <li class="skill-card">
+              <span class="skill-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.5-.8 1.5-1.5 0-1.3-1-1.5-1-2.5 0-.8.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4-4-7.5-9-7.5z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7.5" r="1"/></svg></span>
+              <div>
+                <h3>Design &amp; video</h3>
+                <p>Graphics, logos and videos made in Photoshop, Illustrator, Canva and CapCut.</p>
+              </div>
+            </li>
+            <li class="skill-card">
+              <span class="skill-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg></span>
+              <div>
+                <h3>Web development</h3>
+                <p>Websites built with HTML, CSS, JavaScript, PHP and GoHighLevel.</p>
+              </div>
+            </li>
+            <li class="skill-card">
+              <span class="skill-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span>
+              <div>
+                <h3>IT support &amp; security</h3>
+                <p>Troubleshooting, networking and security, backed by Cisco training.</p>
+              </div>
+            </li>
+            <li class="skill-card">
+              <span class="skill-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><path d="M4 14h3v5H5a1 1 0 0 1-1-1zM20 14h-3v5h2a1 1 0 0 0 1-1z"/></svg></span>
+              <div>
+                <h3>Customer communication</h3>
+                <p>BPO experience handling calls, emails and support tickets.</p>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Availability -->
+          <ul class="availability">
+            <li class="status-available">Freelance: available</li>
+            <li class="status-available">Full-time: available</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -264,6 +307,52 @@
             <li data-file="assets/documents/certificates/Professionalism and Communication.pdf"><a href="assets/documents/certificates/Professionalism%20and%20Communication.pdf" target="_blank" rel="noopener">Professionalism and Communication <span>View certificate</span></a></li>
             <li data-file="assets/documents/certificates/certificate-mkt101-digital-advertising-strategy-foundations-63ebee96da30a43de9049b54.pdf"><a href="assets/documents/certificates/certificate-mkt101-digital-advertising-strategy-foundations-63ebee96da30a43de9049b54.pdf" target="_blank" rel="noopener">MKT101 – Digital Advertising Strategy Foundations <span>View certificate</span></a></li>
         </ul>
+      </div>
+    </section>
+
+    <!-- ========== FAQ ==========
+         Edit a question/answer, or copy a <details> block to add one. -->
+    <section class="section" id="faq">
+      <div class="container faq-grid">
+        <div class="faq-head reveal">
+          <p class="eyebrow">FAQ</p>
+          <h2>Questions clients usually ask</h2>
+          <p>Anything else? Just <a href="contact">send a message</a>.</p>
+        </div>
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary>What hours do you work?<span class="faq-toggle" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>I’m based in the Philippines (GMT+8) and can adjust my schedule so it overlaps with your business hours.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Can we start with a small test task?<span class="faq-toggle" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Yes. One graphic, a short video edit or a single landing page section is a good way to see how we work together before a bigger project.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What do you need from me to edit videos?<span class="faq-toggle" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Your raw clips, logo and brand colors, any music or voiceover you want used, and an example of a style you like. For lesson or explainer videos, I can also write the script and create the voiceover with Amazon Polly.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Which tools and platforms do you use?<span class="faq-toggle" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Photoshop, Illustrator and Canva for design; CapCut, Filmora Go and Canva for video; HTML, CSS, JavaScript, PHP, GoHighLevel, GitHub and Vercel for websites; and Facebook, Meta ads and BotCake for social media and chat automation.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Can you work inside the tools we already use?<span class="faq-toggle" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Yes. I learn new software quickly and I’m happy to work in your accounts, templates and workflows instead of asking you to change them.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>How do we stay in touch?<span class="faq-toggle" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>WhatsApp or email, whichever you prefer. I share progress as I go, so you always know where your project stands.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>How do you handle customer data and logins?<span class="faq-toggle" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>Carefully. With training in cybersecurity, endpoint security and network defense, I use only the access I need, never share passwords over chat, and follow your company’s security rules.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>How is pricing set?<span class="faq-toggle" aria-hidden="true"></span></summary>
+            <div class="faq-answer"><p>It depends on the work: per graphic, per video or per website, or a monthly rate for ongoing tasks. Send me the details and I’ll give you a clear quote before we start.</p></div>
+          </details>
+        </div>
       </div>
     </section>
   </main>
