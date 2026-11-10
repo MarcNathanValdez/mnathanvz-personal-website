@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Marc Nathaniel Valdez — MNATHANVZ</title>
+  <meta name="description" content="Portfolio of Marc Nathaniel Valdez, IT specialist, graphic designer, video editor and web developer from Caloocan City, Philippines.">
+  <link rel="icon" href="assets/images/logo/logo.svg" type="image/svg+xml">
+
+  <!-- Fonts: Archivo (its wide style matches the logo) + JetBrains Mono (code) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Set the saved theme before the page paints (prevents a white flash) -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = saved || (dark ? "dark" : "light");
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Scroll progress bar (width set by js/animations.js) -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html" aria-label="MNATHANVZ home">
+        <svg viewBox="8 13 184 136" aria-hidden="true"><path fill-rule="evenodd" d="M40 15.5H63.75L100 122.5L136.25 15.5H160L190 107.5L148.75 132.5L187.5 146.25L128 138L126 146.25H74L72 138L12.5 146.25L51.25 132.5L10 107.5Z M50 42.5L30 105L37.5 98.75L68 128Z M150 42.5L170 105L162.5 98.75L132 128Z"/></svg>
+        <span class="brand-name">MNATHANVZ</span>
+      </a>
+
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <mask id="moon-mask">
+              <rect x="-4" y="-4" width="32" height="32" fill="white"/>
+              <circle class="bite" cx="17" cy="7" r="5" fill="black"/>
+            </mask>
+            <circle class="sun" cx="12" cy="12" r="5" mask="url(#moon-mask)"/>
+            <g class="rays">
+              <line x1="12" y1="1.5" x2="12" y2="3.5"/>
+              <line x1="12" y1="20.5" x2="12" y2="22.5"/>
+              <line x1="1.5" y1="12" x2="3.5" y2="12"/>
+              <line x1="20.5" y1="12" x2="22.5" y2="12"/>
+              <line x1="4.6" y1="4.6" x2="6" y2="6"/>
+              <line x1="18" y1="18" x2="19.4" y2="19.4"/>
+              <line x1="4.6" y1="19.4" x2="6" y2="18"/>
+              <line x1="18" y1="6" x2="19.4" y2="4.6"/>
+            </g>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="home">
+      <!-- Floating code symbols — filled in by js/code-effects.js -->
+      <div class="code-rain" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="hero-text">
+          <p class="hero-greeting load-in" style="--d:0"><span class="code-comment">//</span> Hi, my name is</p>
+          <h1 class="hero-name load-in" style="--d:1" data-scramble>Marc Nathaniel Valdez</h1>
+
+          <!-- Edit the rotating words in data-typed (comma separated) -->
+          <p class="hero-role load-in" style="--d:2">
+            I’m a <span class="typed" data-typed="IT specialist, graphic designer, video editor, web developer"></span>
+          </p>
+
+          <p class="hero-summary load-in" style="--d:3">
+            I’m a rational, solution-oriented IT specialist who provides complete customer service
+            to individuals and companies. I bring strong analytical thinking, editing and design
+            skills, and I’m good at finding and fixing technology problems.
+          </p>
+
+          <div class="hero-actions load-in" style="--d:4">
+            <!-- Resume file: assets/documents/resume/Marc-Nathaniel-Valdez-CV.pdf (replace it to update) -->
+            <a class="btn btn-primary" href="assets/documents/resume/Marc-Nathaniel-Valdez-CV.pdf" download="Marc-Nathaniel-Valdez-CV.pdf" data-file="assets/documents/resume/Marc-Nathaniel-Valdez-CV.pdf">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>
+              Download resume
+            </a>
+            <a class="btn btn-ghost" href="portfolio.html">See my work</a>
+            <ul class="socials">
+            <li><a href="https://www.facebook.com/mnathanvz" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.2v2.3H7.4V14h2.8v8z"/></svg></a></li>
+            <li><a href="https://www.instagram.com/mnathanvz/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.3-3.6a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6z"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/marc-nathaniel-valdez-0933aa271/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.2a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2zM3.2 9h3.6v12H3.2zM9.3 9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5V21h-3.6v-6c0-1.4 0-3.3-2-3.3s-2.3 1.6-2.3 3.2V21H9.3z"/></svg></a></li>
+          </ul>
+          </div>
+        </div>
+
+        <!-- Animated logo: draws its outline, fills in, then the wordmark appears -->
+        <div class="hero-mark" aria-hidden="true">
+          <svg viewBox="0 0 200 185">
+            <path class="mark-path" pathLength="1" fill-rule="evenodd" d="M40 15.5H63.75L100 122.5L136.25 15.5H160L190 107.5L148.75 132.5L187.5 146.25L128 138L126 146.25H74L72 138L12.5 146.25L51.25 132.5L10 107.5Z M50 42.5L30 105L37.5 98.75L68 128Z M150 42.5L170 105L162.5 98.75L132 128Z"/>
+            <text class="wordmark" x="104" y="180" text-anchor="middle">MNATHANVZ</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="section about" id="about">
+      <div class="container about-grid">
+        <figure class="profile-photo reveal" data-tilt data-file="assets/images/profile/profile-img.png">
+          <img src="assets/images/profile/profile-img.png" alt="Portrait of Marc Nathaniel Valdez">
+        </figure>
+
+        <div class="about-body reveal">
+          <h2>About me</h2>
+          <p>
+            I’m an IT graduate from Caloocan City who works across design, video and the web —
+            from social media graphics and email templates to ads, reels and full websites.
+          </p>
+
+          <!-- Personal details: add or remove a <div> to change the list -->
+          <dl class="details stagger">
+            <div><dt>Birthday</dt><dd>17 June 2000</dd></div>
+            <div><dt>Age</dt><dd data-age-from="2000-06-17">26</dd></div>
+            <div><dt>City</dt><dd>Caloocan City, Metro Manila</dd></div>
+            <div><dt>Course</dt><dd>BS Information Technology</dd></div>
+            <div><dt>Phone</dt><dd><a href="tel:+639760681812">+63 976 068 1812</a></dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:marcnathanvaldez@gmail.com">marcnathanvaldez@gmail.com</a></dd></div>
+            <div><dt>Freelance</dt><dd class="status-available">Available</dd></div>
+            <div><dt>Full-time</dt><dd class="status-available">Available</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TOOLS ========== -->
+    <section class="section" id="tools">
+      <div class="container tools-grid">
+        <div>
+          <div class="section-head reveal">
+            <h2>Tools I work with</h2>
+            <p>The software and platforms I use for design, video, automation and web projects.</p>
+          </div>
+          <ul class="tools reveal stagger">
+            <li>Go High Level</li>
+            <li>React JS</li>
+            <li>Vue JS</li>
+            <li>JavaScript</li>
+            <li>PHP</li>
+            <li>Packet Tracer</li>
+            <li>Adobe Photoshop</li>
+            <li>Adobe Illustrator</li>
+            <li>Canva</li>
+            <li>CapCut</li>
+            <li>Filmora Go</li>
+            <li>ChatGPT</li>
+            <li>AI Amazon Polly</li>
+            <li>Facebook automation (BotCake)</li>
+          </ul>
+        </div>
+
+        <!-- Code editor that types itself — edit the code in js/code-effects.js -->
+        <div class="code-window reveal" aria-label="Code sample describing Marc">
+          <div class="code-window-bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="code-file">marc.js</span>
+          </div>
+          <pre class="code-body"><code id="code-typer"></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CERTIFICATIONS ========== -->
+    <section class="section" id="certifications">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Certifications</h2>
+          <p>Courses I’ve completed in networking, security, marketing and customer service.</p>
+        </div>
+        <ul class="certs reveal stagger">
+            <li data-file="assets/documents/certificates/Introduction to Packet Tracer.pdf"><a href="assets/documents/certificates/Introduction%20to%20Packet%20Tracer.pdf" target="_blank" rel="noopener">Introduction to Packet Tracer <span>View certificate</span></a></li>
+            <li data-file="assets/documents/certificates/Introduction to Cybersecurity.pdf"><a href="assets/documents/certificates/Introduction%20to%20Cybersecurity.pdf" target="_blank" rel="noopener">Introduction to Cybersecurity <span>View certificate</span></a></li>
+            <li data-file="assets/documents/certificates/Valdez, Marc Nathaniel M. - Cloud Computing and DevOps.pdf"><a href="assets/documents/certificates/Valdez,%20Marc%20Nathaniel%20M.%20-%20Cloud%20Computing%20and%20DevOps.pdf" target="_blank" rel="noopener">Cloud Computing and DevOps <span>View certificate</span></a></li>
+            <li data-file="assets/documents/certificates/Endpoint Security.pdf"><a href="assets/documents/certificates/Endpoint%20Security.pdf" target="_blank" rel="noopener">Endpoint Security <span>View certificate</span></a></li>
+            <li data-file="assets/documents/certificates/Ethical Hacker.pdf"><a href="assets/documents/certificates/Ethical%20Hacker.pdf" target="_blank" rel="noopener">Ethical Hacker <span>View certificate</span></a></li>
+            <li data-file="assets/documents/certificates/How to Counter-Act when Hacked.pdf"><a href="assets/documents/certificates/How%20to%20Counter-Act%20when%20Hacked.pdf" target="_blank" rel="noopener">How to Counter-Act when Hacked <span>View certificate</span></a></li>
+            <li data-file="assets/documents/certificates/Querying Fundamentals with MySQL Essentials for Beginners.pdf"><a href="assets/documents/certificates/Querying%20Fundamentals%20with%20MySQL%20Essentials%20for%20Beginners.pdf" target="_blank" rel="noopener">Querying Fundamentals with MySQL Essentials for Beginners <span>View certificate</span></a></li>
+            <li data-file="assets/documents/certificates/PC Assembly & Disassembly.pdf"><a href="assets/documents/certificates/PC%20Assembly%20&%20Disassembly.pdf" target="_blank" rel="noopener">PC Assembly &amp; Disassembly <span>View certificate</span></a></li>
+            <li data-file="assets/documents/certificates/Network Defense.pdf"><a href="assets/documents/certificates/Network%20Defense.pdf" target="_blank" rel="noopener">Network Defense <span>View certificate</span></a></li>
+            <li><a href="https://wing-academy.thinkific.com/certificates/jisqcfqe1o" target="_blank" rel="noopener">Basic Customer Service Representative Skills Training <span>View certificate</span></a></li>
+            <li data-file="assets/documents/certificates/InnerSparcRealtyCertificationRecognitionVideoMaking.pdf"><a href="assets/documents/certificates/InnerSparcRealtyCertificationRecognitionVideoMaking.pdf" target="_blank" rel="noopener">Certificate of Recognition in the Video Making Activity #1 <span>View certificate</span></a></li>
+            <li data-file="assets/documents/certificates/Professionalism and Communication.pdf"><a href="assets/documents/certificates/Professionalism%20and%20Communication.pdf" target="_blank" rel="noopener">Professionalism and Communication <span>View certificate</span></a></li>
+            <li data-file="assets/documents/certificates/certificate-mkt101-digital-advertising-strategy-foundations-63ebee96da30a43de9049b54.pdf"><a href="assets/documents/certificates/certificate-mkt101-digital-advertising-strategy-foundations-63ebee96da30a43de9049b54.pdf" target="_blank" rel="noopener">MKT101 – Digital Advertising Strategy Foundations <span>View certificate</span></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-brand">
+        <strong>MNATHANVZ</strong>
+        <span>Built with Nathan.</span>
+      </div>
+      <ul class="socials">
+            <li><a href="https://www.facebook.com/mnathanvz" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.2v2.3H7.4V14h2.8v8z"/></svg></a></li>
+            <li><a href="https://www.instagram.com/mnathanvz/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.3-3.6a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6z"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/marc-nathaniel-valdez-0933aa271/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.2a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2zM3.2 9h3.6v12H3.2zM9.3 9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5V21h-3.6v-6c0-1.4 0-3.3-2-3.3s-2.3 1.6-2.3 3.2V21H9.3z"/></svg></a></li>
+          </ul>
+      <p class="copyright">&copy; <span data-year></span> MNATHANVZ. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Back to top (appears after scrolling) -->
+  <button class="back-to-top" type="button" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m0 0-6 6m6-6 6 6"/></svg>
+  </button>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/file-check.js"></script>
+  <script src="js/code-effects.js"></script>
+</body>
+</html>
