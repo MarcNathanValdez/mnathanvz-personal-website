@@ -20,6 +20,30 @@ function whenIntroDone(callback) {
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+/* ---------- Page links ---------- */
+/**
+ * Links between pages are written without ".html" (e.g. href="portfolio"),
+ * so the live site shows clean addresses like mnathanvz.space/portfolio.
+ * The server handles that (see .htaccess / vercel.json).
+ *
+ * When you open the files straight from your computer (file://) there's
+ * no server, so this adds ".html" back to make the links work there too.
+ */
+function initLocalLinks() {
+  if (location.protocol !== "file:") return;
+
+  document.querySelectorAll("a[href]").forEach((link) => {
+    const href = link.getAttribute("href");
+    if (href === "./" || href === "/") {
+      link.setAttribute("href", "index.html");
+    } else if (/^[a-z0-9-]+$/i.test(href)) {
+      link.setAttribute("href", `${href}.html`); // "portfolio" → "portfolio.html"
+    }
+  });
+}
+
+initLocalLinks(); // runs right away, before anyone can click
+
 /* ---------- Theme ---------- */
 const THEME_KEY = "theme";
 

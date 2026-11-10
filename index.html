@@ -33,7 +33,7 @@
 </head>
 <body>
 
-  <!-- ========== ENTRANCE SCREEN (js/intro.js) ==========
+  <!-- ========== ENTRANCE SCREEN (js/intro.js + js/intro-sound.js) ==========
        The logo is cut into 3 pieces that fly together, lock into place,
        get traced and polished, then the logo flies up into the header. -->
   <div class="intro" aria-hidden="true">
@@ -74,6 +74,14 @@
         <span>M</span><span>N</span><span>A</span><span>T</span><span>H</span><span>A</span><span>N</span><span>V</span><span>Z</span>
       </p>
     </div>
+    <!-- Shown when the browser needs a click before it allows sound -->
+    <div class="intro-gate">
+      <button class="intro-enter" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4zM15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>
+        Enter
+      </button>
+    </div>
+
     <button class="intro-skip" type="button">Skip</button>
   </div>
 
@@ -83,16 +91,16 @@
   <!-- ========== HEADER ========== -->
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="index.html" aria-label="MNATHANVZ home">
+      <a class="brand" href="./" aria-label="MNATHANVZ home">
         <svg viewBox="8 13 184 136" aria-hidden="true"><path fill-rule="evenodd" d="M40 15.5H63.75L100 122.5L136.25 15.5H160L190 107.5L148.75 132.5L187.5 146.25L128 138L126 146.25H74L72 138L12.5 146.25L51.25 132.5L10 107.5Z M50 42.5L30 105L37.5 98.75L68 128Z M150 42.5L170 105L162.5 98.75L132 128Z"/></svg>
         <span class="brand-name">MNATHANVZ</span>
       </a>
 
       <nav class="nav" aria-label="Main">
         <ul>
-          <li><a href="index.html" aria-current="page">Home</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="./" aria-current="page">Home</a></li>
+          <li><a href="portfolio">Portfolio</a></li>
+          <li><a href="contact">Contact</a></li>
         </ul>
 
         <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
@@ -141,12 +149,13 @@
           </p>
 
           <div class="hero-actions load-in" style="--d:4">
-            <!-- Resume file: assets/documents/resume/Marc-Nathaniel-Valdez-CV.pdf (replace it to update) -->
-            <a class="btn btn-primary" href="assets/documents/resume/Marc-Nathaniel-Valdez-CV.pdf" download="Marc-Nathaniel-Valdez-CV.pdf" data-file="assets/documents/resume/Marc-Nathaniel-Valdez-CV.pdf">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>
-              Download resume
+            <!-- Resume: opens in a view-only pop-up (js/resume-viewer.js).
+                 File: assets/documents/resume/Marc-Nathaniel-Valdez-CV.pdf (replace it to update) -->
+            <a class="btn btn-primary" href="assets/documents/resume/Marc-Nathaniel-Valdez-CV.pdf" target="_blank" rel="noopener" data-resume-viewer data-file="assets/documents/resume/Marc-Nathaniel-Valdez-CV.pdf">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+              View resume
             </a>
-            <a class="btn btn-ghost" href="portfolio.html">See my work</a>
+            <a class="btn btn-ghost" href="portfolio">See my work</a>
             <ul class="socials">
             <li><a href="https://www.facebook.com/mnathanvz" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.6 1.6-1.6h1.7V4.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.2v2.3H7.4V14h2.8v8z"/></svg></a></li>
             <li><a href="https://www.instagram.com/mnathanvz/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.3-3.6a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6z"/></svg></a></li>
@@ -208,6 +217,8 @@
             <li>Vue JS</li>
             <li>JavaScript</li>
             <li>PHP</li>
+            <li>GitHub</li>
+            <li>Vercel</li>
             <li>Packet Tracer</li>
             <li>Adobe Photoshop</li>
             <li>Adobe Illustrator</li>
@@ -257,6 +268,19 @@
     </section>
   </main>
 
+  <!-- Resume viewer (view only — no download button) -->
+  <dialog class="resume-viewer" id="resume-viewer" aria-label="Resume">
+    <div class="resume-viewer-bar">
+      <h2>Resume</h2>
+      <button class="resume-viewer-close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="resume-viewer-pages">
+      <p class="resume-viewer-status">Loading resume…</p>
+    </div>
+  </dialog>
+
   <!-- ========== FOOTER ========== -->
   <footer class="site-footer">
     <div class="container">
@@ -279,10 +303,12 @@
   </button>
 
   <script src="js/main.js"></script>
+  <script src="js/intro-sound.js"></script>
   <script src="js/intro.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/data/live-site-files.js"></script>
   <script src="js/file-check.js"></script>
   <script src="js/code-effects.js"></script>
+  <script src="js/resume-viewer.js"></script>
 </body>
 </html>

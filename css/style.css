@@ -17,6 +17,8 @@
    14. Programming effects (code rain + code editor)
    15. Extra animations (page transitions, scroll bar, tilt, ripple…)
    16. Entrance screen (js/intro.js)
+   17. Resume viewer (js/resume-viewer.js)
+   18. YouTube projects + note
    ================================================================= */
 
 
@@ -1907,6 +1909,68 @@ body.is-leaving .site-footer {
   to { opacity: 1; transform: none; }
 }
 
+/* Waiting for "Enter": everything is paused, the gate is shown */
+.intro.is-waiting .intro-inner,
+.intro.is-waiting .intro-inner * {
+  animation-play-state: paused !important;
+}
+
+.intro-gate {
+  display: none;
+}
+
+.intro.is-waiting .intro-gate {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.9rem;
+  animation: fade-in 0.6s ease both;
+}
+
+.intro-enter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.8rem;
+  border: 1px solid #3a414b;
+  border-radius: 999px;
+  background: transparent;
+  color: #e7eaee;
+  font: inherit;
+  font-weight: 700;
+  font-stretch: 125%;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+  animation: gate-pulse 2.2s ease-in-out infinite;
+}
+
+.intro-enter svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.intro-enter:hover,
+.intro-enter:focus-visible {
+  border-color: #8e9cff;
+  background: #8e9cff;
+  color: #101317;
+  animation: none;
+}
+
+@keyframes gate-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(142, 156, 255, 0.35); }
+  50% { box-shadow: 0 0 0 12px rgba(142, 156, 255, 0); }
+}
+
 /* Skip button */
 .intro-skip {
   position: absolute;
@@ -1946,4 +2010,204 @@ body.is-leaving .site-footer {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+
+/* ---------- 17. Resume viewer ---------- */
+.resume-viewer {
+  width: min(100% - 2rem, 860px);
+  height: min(100% - 2rem, 92vh);
+  max-height: none;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.resume-viewer[open] {
+  display: flex;
+  flex-direction: column;
+  animation: lightbox-in 0.45s var(--ease-out);
+}
+
+.resume-viewer::backdrop {
+  background: rgba(10, 12, 15, 0.75);
+  backdrop-filter: blur(4px);
+}
+
+.resume-viewer[open]::backdrop {
+  animation: fade-in 0.3s ease;
+}
+
+.resume-viewer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0.75rem 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.resume-viewer-bar h2 {
+  font-size: 1.05rem;
+  font-stretch: 110%;
+}
+
+.resume-viewer-close {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 0.3s var(--ease-out), background-color 0.2s;
+}
+
+.resume-viewer-close:hover {
+  background: var(--bg);
+  transform: rotate(90deg);
+}
+
+.resume-viewer-close svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.resume-viewer-pages {
+  flex: 1;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 1rem;
+  padding: 1rem;
+  overflow-y: auto;
+  background: var(--bg);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.resume-page {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+  background: #fff;
+  animation: item-in 0.5s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 120ms);
+}
+
+.resume-viewer-status {
+  padding: 3rem 0;
+  color: var(--muted);
+}
+
+
+/* ---------- 18. YouTube projects + note ---------- */
+.youtube-note {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin: calc(var(--space-l) * -0.5) 0 var(--space-l);
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line);
+  border-left: 4px solid #ff0033;
+  border-radius: var(--radius-s);
+  background: var(--surface);
+  animation: rise 0.5s var(--ease-out) both;
+}
+
+.youtube-note[hidden] {
+  display: none;
+}
+
+.youtube-note-icon svg {
+  width: 28px;
+  height: 28px;
+  fill: #ff0033;
+}
+
+.youtube-note p {
+  color: var(--muted);
+}
+
+.youtube-note a {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+.youtube-note a:hover {
+  color: var(--accent);
+}
+
+.youtube-note ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.youtube-note li::before {
+  content: "▶";
+  margin-right: 0.4rem;
+  font-size: 0.65rem;
+  color: #ff0033;
+}
+
+/* Card for a playlist without a thumbnail */
+.yt-tile {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.9rem;
+  padding: 1.25rem;
+  background: linear-gradient(160deg, #1d2127, #101317);
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  font-stretch: 110%;
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+
+.yt-tile svg {
+  width: 56px;
+  height: 56px;
+  fill: #ff0033;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.work-card:hover .yt-tile svg {
+  transform: scale(1.12);
+}
+
+/* 16:9 YouTube player in the pop-up */
+.yt-frame {
+  width: min(100%, 72vh * 16 / 9);
+  aspect-ratio: 16 / 9;
+}
+
+.yt-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Only one project in the list: no previous/next arrows */
+.lightbox-nav[hidden] {
+  display: none;
 }

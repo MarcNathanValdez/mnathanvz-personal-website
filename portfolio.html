@@ -33,7 +33,7 @@
 </head>
 <body>
 
-  <!-- ========== ENTRANCE SCREEN (js/intro.js) ==========
+  <!-- ========== ENTRANCE SCREEN (js/intro.js + js/intro-sound.js) ==========
        The logo is cut into 3 pieces that fly together, lock into place,
        get traced and polished, then the logo flies up into the header. -->
   <div class="intro" aria-hidden="true">
@@ -74,6 +74,14 @@
         <span>M</span><span>N</span><span>A</span><span>T</span><span>H</span><span>A</span><span>N</span><span>V</span><span>Z</span>
       </p>
     </div>
+    <!-- Shown when the browser needs a click before it allows sound -->
+    <div class="intro-gate">
+      <button class="intro-enter" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4zM15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>
+        Enter
+      </button>
+    </div>
+
     <button class="intro-skip" type="button">Skip</button>
   </div>
 
@@ -83,16 +91,16 @@
   <!-- ========== HEADER ========== -->
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="index.html" aria-label="MNATHANVZ home">
+      <a class="brand" href="./" aria-label="MNATHANVZ home">
         <svg viewBox="8 13 184 136" aria-hidden="true"><path fill-rule="evenodd" d="M40 15.5H63.75L100 122.5L136.25 15.5H160L190 107.5L148.75 132.5L187.5 146.25L128 138L126 146.25H74L72 138L12.5 146.25L51.25 132.5L10 107.5Z M50 42.5L30 105L37.5 98.75L68 128Z M150 42.5L170 105L162.5 98.75L132 128Z"/></svg>
         <span class="brand-name">MNATHANVZ</span>
       </a>
 
       <nav class="nav" aria-label="Main">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="portfolio.html" aria-current="page">Portfolio</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="./">Home</a></li>
+          <li><a href="portfolio" aria-current="page">Portfolio</a></li>
+          <li><a href="contact">Contact</a></li>
         </ul>
 
         <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
@@ -130,6 +138,8 @@
       <!-- Filter buttons and cards are built by js/portfolio.js
            from the list in js/data/portfolio-data.js -->
       <div class="filters" id="filters" role="toolbar" aria-label="Filter projects"></div>
+      <!-- Note with the YouTube links (text + links set in js/data/portfolio-data.js) -->
+      <div class="youtube-note" id="youtube-note" hidden></div>
       <ul class="work-grid" id="work-grid"></ul>
     </section>
   </main>
@@ -180,6 +190,7 @@
   </button>
 
   <script src="js/main.js"></script>
+  <script src="js/intro-sound.js"></script>
   <script src="js/intro.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/data/live-site-files.js"></script>

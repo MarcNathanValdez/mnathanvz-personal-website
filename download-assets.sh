@@ -66,21 +66,13 @@ https://www.mnathanvz.online/assets/video/Zen%27s%20Informative%20TV%20Show%21/Z
 https://www.mnathanvz.online/assets/video/Zen%27s%20Informative%20TV%20Show%21/Zen%27s%20Informative%20TV%20Show%21%20Part%20II.mp4	assets/videos/zens-informative-tv-show/Zen's Informative TV Show! Part II.mp4
 https://www.mnathanvz.online/assets/video/Adapot%20Vlog%202.0/Adapot%20Vlog%202.0_Intro.mp4	assets/videos/adapot-vlog/Adapot Vlog 2.0_Intro.mp4
 https://www.mnathanvz.online/assets/video/Adapot%20Vlog%202.0/Adapot%20Vlog%202.0_Outro.mp4	assets/videos/adapot-vlog/Adapot Vlog 2.0_Outro.mp4
-https://www.mnathanvz.online/assets/video/Inner%20SPARC%20Realty%20Corporation/Inner%20Sparc%20Realty%20Corporation%20Recruitment%20Ads.mp4	assets/videos/inner-sparc-realty/Inner Sparc Realty Corporation Recruitment Ads.mp4
 https://www.mnathanvz.online/assets/video/Inner%20SPARC%20Realty%20Corporation/Reel_Type_Video_Portrait.mp4	assets/videos/inner-sparc-realty/Reel_Type_Video_Portrait.mp4
 https://www.mnathanvz.online/assets/video/Inner%20SPARC%20Realty%20Corporation/Youtube_Facebook%20Advertisement.mp4	assets/videos/inner-sparc-realty/Youtube_Facebook Advertisement.mp4
-https://www.mnathanvz.online/assets/video/Inner%20SPARC%20Realty%20Corporation/Inner%20Sparc%20Realty%20Ads.mp4	assets/videos/inner-sparc-realty/Inner Sparc Realty Ads.mp4
-https://www.mnathanvz.online/assets/video/Inner%20SPARC%20Realty%20Corporation/Renting%20Vs.%20Owning%20Ads.mp4	assets/videos/inner-sparc-realty/Renting Vs. Owning Ads.mp4
 https://www.mnathanvz.online/assets/video/Inner%20SPARC%20Realty%20Corporation/1%20minute%20Video%20Reels%20for%20Savia%20Parkway.mp4	assets/videos/inner-sparc-realty/1 minute Video Reels for Savia Parkway.mp4
 https://www.mnathanvz.online/assets/video/Inner%20SPARC%20Realty%20Corporation/Inner%20Sparc%20Realty%20Corporation%20Bank%20Financing%20Ads.mp4	assets/videos/inner-sparc-realty/Inner Sparc Realty Corporation Bank Financing Ads.mp4
-https://www.mnathanvz.online/assets/video/Inner%20SPARC%20Realty%20Corporation/Client%20House%20Inspection.mp4	assets/videos/inner-sparc-realty/Client House Inspection.mp4
-https://www.mnathanvz.online/assets/video/Inner%20SPARC%20Realty%20Corporation/Tips%20in%20Buying%20Home.mp4	assets/videos/inner-sparc-realty/Tips in Buying Home.mp4
 https://www.mnathanvz.online/assets/video/Inner%20SPARC%20Realty%20Corporation/Lancaster%20Townhouse%20Ads.mp4	assets/videos/inner-sparc-realty/Lancaster Townhouse Ads.mp4
-https://www.mnathanvz.online/assets/video/Inner%20SPARC%20Realty%20Corporation/Lancaster%20Ads.mp4	assets/videos/inner-sparc-realty/Lancaster Ads.mp4
 https://www.mnathanvz.online/assets/video/Inner%20SPARC%20Realty%20Corporation/Reels%20Tiktok.mp4	assets/videos/inner-sparc-realty/Reels Tiktok.mp4
 https://www.mnathanvz.online/assets/video/Inner%20SPARC%20Realty%20Corporation/Recruitment%20Video%20%281%29.mp4	assets/videos/inner-sparc-realty/Recruitment Video (1).mp4
-https://www.mnathanvz.online/assets/video/Inner%20SPARC%20Realty%20Corporation/Transcripting%20%281%29.mp4	assets/videos/inner-sparc-realty/Transcripting (1).mp4
-https://www.mnathanvz.online/assets/video/Rove%20Chem%20Trading/Transcripting%20%282%29.mp4	assets/videos/rove-chem-trading/Transcripting (2).mp4
 https://www.mnathanvz.online/assets/video/Inner%20SPARC%20Realty%20Corporation/New%20Lancaster%20City.mp4	assets/videos/inner-sparc-realty/New Lancaster City.mp4
 https://www.mnathanvz.online/assets/img/website/riotmusicstudio.png	assets/images/websites/riotmusicstudio.png
 https://www.mnathanvz.online/assets/img/website/Wealth%20Optimizer%20Website.png	assets/images/websites/Wealth Optimizer Website.png

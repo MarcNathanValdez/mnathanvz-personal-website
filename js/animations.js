@@ -25,12 +25,14 @@ function initPageTransitions() {
     if (!link) return;
 
     const url = new URL(link.href, location.href);
+    const lastPart = url.pathname.split("/").pop();
+    const isPage = !lastPart.includes(".") || lastPart.endsWith(".html"); // "portfolio", "", "contact.html"
     const isInternalPage =
       url.origin === location.origin &&
       url.pathname !== location.pathname &&
       !link.target &&
       !link.hasAttribute("download") &&
-      url.pathname.endsWith(".html");
+      isPage;
 
     // Let new tabs, downloads and modifier-clicks work normally
     if (!isInternalPage || event.metaKey || event.ctrlKey || event.shiftKey) return;
