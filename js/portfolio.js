@@ -21,11 +21,6 @@ const ICONS = {
   web: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.9 6h-3a15.7 15.7 0 0 0-1.4-4A8 8 0 0 1 18.9 8zM12 4c.8 1.1 1.5 2.5 1.9 4h-3.8c.4-1.5 1.1-2.9 1.9-4zM4.3 14a8 8 0 0 1 0-4h3.4a16.5 16.5 0 0 0 0 4zm.8 2h3a15.7 15.7 0 0 0 1.4 4 8 8 0 0 1-4.4-4zm3-8h-3a8 8 0 0 1 4.4-4A15.7 15.7 0 0 0 8.1 8zM12 20c-.8-1.1-1.5-2.5-1.9-4h3.8c-.4 1.5-1.1 2.9-1.9 4zm2.3-6H9.7a14.7 14.7 0 0 1 0-4h4.6a14.7 14.7 0 0 1 0 4zm.2 6a15.7 15.7 0 0 0 1.4-4h3a8 8 0 0 1-4.4 4zm1.8-6a16.5 16.5 0 0 0 0-4h3.4a8 8 0 0 1 0 4z"/></svg>',
 };
 
-/** Turns a path from the data file into a full, safe URL */
-function assetUrl(path) {
-  return encodeURI(ASSET_BASE + path);
-}
-
 /* ---------- Filters ---------- */
 function renderFilters() {
   const counts = availableItems.reduce((acc, item) => {
@@ -70,7 +65,7 @@ function changeFilter(filter) {
 
 /* ---------- Grid ---------- */
 function cardMarkup(item, index) {
-  const src = assetUrl(item.src);
+  const src = item.url;
   let media = `<img src="${src}" alt="" loading="lazy">`;
   let badge = "";
 
@@ -132,7 +127,7 @@ function lazyLoadVideos() {
 function showItem(index, direction = 0) {
   currentIndex = (index + visibleItems.length) % visibleItems.length; // wraps around
   const item = visibleItems[currentIndex];
-  const src = assetUrl(item.src);
+  const src = item.url;
   const media = lightbox.querySelector(".lightbox-media");
 
   media.innerHTML =
@@ -191,16 +186,16 @@ function initLightbox() {
 
 /* ---------- Start ---------- */
 
-// Only show projects whose file is still in /assets (see js/file-check.js).
-// Delete a file and its project disappears — filters and counts update too.
+// Find each project's file (see js/file-check.js). Projects with no file
+// are hidden, and the filters and counts update to match.
 async function start() {
   grid.innerHTML = '<li class="empty-state">Loading projects…</li>';
 
-  const checks = await Promise.all(PORTFOLIO_ITEMS.map((item) => fileExists(ASSET_BASE + item.src)));
-  availableItems = PORTFOLIO_ITEMS.filter((item, i) => checks[i]);
+  const urls = await Promise.all(PORTFOLIO_ITEMS.map((item) => findFile(ASSET_BASE + item.src)));
+  availableItems = PORTFOLIO_ITEMS.map((item, i) => ({ ...item, url: urls[i] })).filter((item) => item.url);
 
   const missing = PORTFOLIO_ITEMS.length - availableItems.length;
-  if (missing) console.info(`${missing} portfolio file(s) not found in /assets, so they are hidden.`);
+  if (missing) console.info(`${missing} portfolio file(s) not found, so they are hidden.`);
 
   renderFilters();
   renderGrid();

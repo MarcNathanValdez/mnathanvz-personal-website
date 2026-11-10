@@ -1,18 +1,23 @@
 /**
- * file-check.js — hides anything whose file was deleted
+ * file-check.js — finds each file, or hides it if it's gone
  * ---------------------------------------------------------------
- * Delete a file from /assets and the site stops showing it:
- *  - portfolio projects (checked in js/portfolio.js)
- *  - any element with  data-file="path/to/file"
- *    (certificates, the resume button, the profile photo)
+ * For every project, certificate, resume and photo:
+ *  1. If the file is in /assets, it's used from there.
+ *  2. If not, and USE_LIVE_SITE_COPIES is true, the copy on
+ *     www.mnathanvz.online is used (list in js/data/live-site-files.js).
+ *  3. Otherwise it's hidden from the site.
  *
- * Nothing to edit here — just add or delete files in /assets.
+ * After you run download-assets (all files are in /assets),
+ * set USE_LIVE_SITE_COPIES to false. From then on, deleting a
+ * file from /assets removes it from the website.
  * ---------------------------------------------------------------
  */
 
+const USE_LIVE_SITE_COPIES = true;
+
 const ON_SERVER = location.protocol.startsWith("http");
 
-/** Resolves to true if the file is there, false if it was deleted */
+/** Resolves to true if the file is in /assets */
 function fileExists(path) {
   const url = encodeURI(path);
 
@@ -46,17 +51,43 @@ function fileExists(path) {
     });
   }
 
-  // PDFs can't be checked from file://, so they're shown
+  // PDFs can't be checked from file://, so they count as present
   return Promise.resolve(true);
 }
 
-/** Removes every [data-file] element whose file is missing */
-function hideMissingFiles() {
-  document.querySelectorAll("[data-file]").forEach((el) => {
-    fileExists(el.dataset.file).then((exists) => {
-      if (!exists) el.remove();
+/**
+ * Resolves to the address to load the file from,
+ * or null if it should be hidden.
+ */
+async function findFile(path) {
+  if (await fileExists(path)) return encodeURI(path);
+
+  const backup = typeof LIVE_SITE_FILES !== "undefined" ? LIVE_SITE_FILES[path] : null;
+  if (USE_LIVE_SITE_COPIES && backup) return backup;
+
+  return null;
+}
+
+/**
+ * Handles every element with  data-file="path":
+ * points its link/image to wherever the file was found, or removes it.
+ */
+function resolveFileElements() {
+  document.querySelectorAll("[data-file]").forEach(async (el) => {
+    const path = el.dataset.file;
+    const url = await findFile(path);
+
+    if (!url) {
+      el.remove();
+      return;
+    }
+
+    // Update the element itself and any link/image inside it
+    [el, ...el.querySelectorAll("a, img")].forEach((node) => {
+      if (node.hasAttribute("href")) node.setAttribute("href", url);
+      if (node.tagName === "IMG") node.setAttribute("src", url);
     });
   });
 }
 
-hideMissingFiles();
+resolveFileElements();

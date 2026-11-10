@@ -10,13 +10,16 @@ portfolio.html             Portfolio grid with filters and pop-up viewer
 contact.html               Contact details + message form
 css/style.css              All styles. Colors and fonts are at the top (section 1)
 js/main.js                 Dark mode, scroll reveal, typing effect, age, year
+js/intro.js                Logo entrance screen — once per visit
 js/animations.js           Page transitions, scroll bar, back-to-top, text scramble, tilt, ripple
 js/code-effects.js         Floating code symbols + self-typing code editor
 js/portfolio.js            Builds the portfolio grid (you rarely need to touch this)
 js/data/portfolio-data.js  YOUR PROJECT LIST — edit this to add/remove work
 js/contact.js              Contact form behavior
-js/file-check.js           Hides anything whose file was deleted from /assets
-download-assets.ps1        Windows: downloads all your files into /assets
+js/file-check.js           Finds each file in /assets (or the live-site copy), hides it if gone
+js/data/live-site-files.js Addresses of the copies on www.mnathanvz.online
+download-assets.bat        Windows: double-click to download all your files into /assets
+download-assets.ps1        (the script the .bat runs)
 download-assets.sh         Mac/Linux: same thing
 
 assets/
@@ -46,14 +49,19 @@ assets/
 Run the download script once. It copies every image, video and certificate
 from www.mnathanvz.online into the right folder (about 70 files).
 
-- **Windows:** right-click `download-assets.ps1` > Run with PowerShell
+- **Windows:** double-click `download-assets.bat`
 - **Mac/Linux:** `bash download-assets.sh`
 
 You can run it again any time; files you already have are skipped.
 
+Until then, nothing is missing on the site: any file not in `/assets` yet loads
+from your current live site instead. Once the download is done, open
+`js/file-check.js` and set `USE_LIVE_SITE_COPIES = false;` so that deleting a
+file from `/assets` removes it from the website.
+
 ## Deleting work
 
-Delete the file from `assets/` (on your computer and on your server) and the site stops showing it:
+With `USE_LIVE_SITE_COPIES = false` in `js/file-check.js`, delete the file from `assets/` (on your computer and on your server) and the site stops showing it:
 the portfolio project, filter count, certificate, resume button or profile photo disappears automatically.
 You don't have to edit any code. The line in `js/data/portfolio-data.js` can stay; it's simply skipped.
 
@@ -67,6 +75,7 @@ You don't have to edit any code. The line in `js/data/portfolio-data.js` can sta
 - **Animate a heading with the scramble effect:** add `data-scramble` to it.
 - **Make something tilt on hover:** add `data-tilt` to it.
 - **Make a list appear item by item:** add the class `stagger` to it.
+- **Change the entrance screen:** timing and motion are in `css/style.css` section 16; how long it stays is `INTRO_DURATION` in `js/intro.js`. To see it again, close the tab and reopen the site.
 - **Change the typing words:** in `index.html`, edit `data-typed="..."` (comma separated).
 - **Add a certificate or tool:** add an `<li>` in the matching list in `index.html`.
 

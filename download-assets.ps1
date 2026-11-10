@@ -4,7 +4,8 @@
 # Downloads every image, video and document from your live site
 # (www.mnathanvz.online) into the matching folders in /assets.
 #
-# How to run: right-click this file > "Run with PowerShell".
+# How to run: double-click download-assets.bat (easiest),
+# or right-click this file > "Run with PowerShell".
 # If Windows blocks it, open PowerShell in this folder and run:
 #   powershell -ExecutionPolicy Bypass -File .\download-assets.ps1
 #

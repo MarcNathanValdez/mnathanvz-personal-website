@@ -14,18 +14,68 @@
 
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Set the saved theme before the page paints (prevents a white flash) -->
+  <!-- Set the saved theme (and the entrance screen) before the page paints -->
   <script>
     (function () {
       try {
         var saved = localStorage.getItem("theme");
         var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
         document.documentElement.dataset.theme = saved || (dark ? "dark" : "light");
+
+        // Entrance screen: once per visit (see js/intro.js)
+        var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!sessionStorage.getItem("introSeen") && !calm) {
+          document.documentElement.classList.add("is-intro");
+        }
       } catch (e) {}
     })();
   </script>
 </head>
 <body>
+
+  <!-- ========== ENTRANCE SCREEN (js/intro.js) ==========
+       The logo is cut into 3 pieces that fly together, lock into place,
+       get traced and polished, then the logo flies up into the header. -->
+  <div class="intro" aria-hidden="true">
+    <div class="intro-inner">
+      <svg class="intro-mark" viewBox="8 13 184 136">
+        <defs>
+          <clipPath id="cut-left"><rect x="0" y="0" width="70" height="160"/></clipPath>
+          <clipPath id="cut-center"><rect x="70" y="0" width="60" height="160"/></clipPath>
+          <clipPath id="cut-right"><rect x="130" y="0" width="70" height="160"/></clipPath>
+          <clipPath id="logo-shape"><path fill-rule="evenodd" d="M40 15.5H63.75L100 122.5L136.25 15.5H160L190 107.5L148.75 132.5L187.5 146.25L128 138L126 146.25H74L72 138L12.5 146.25L51.25 132.5L10 107.5Z M50 42.5L30 105L37.5 98.75L68 128Z M150 42.5L170 105L162.5 98.75L132 128Z"/></clipPath>
+          <linearGradient id="shine" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+            <stop offset="0.5" stop-color="#fff" stop-opacity="0.85"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+
+        <!-- 1. Three pieces -->
+        <g class="piece piece-left" clip-path="url(#cut-left)"><path fill-rule="evenodd" d="M40 15.5H63.75L100 122.5L136.25 15.5H160L190 107.5L148.75 132.5L187.5 146.25L128 138L126 146.25H74L72 138L12.5 146.25L51.25 132.5L10 107.5Z M50 42.5L30 105L37.5 98.75L68 128Z M150 42.5L170 105L162.5 98.75L132 128Z"/></g>
+        <g class="piece piece-center" clip-path="url(#cut-center)"><path fill-rule="evenodd" d="M40 15.5H63.75L100 122.5L136.25 15.5H160L190 107.5L148.75 132.5L187.5 146.25L128 138L126 146.25H74L72 138L12.5 146.25L51.25 132.5L10 107.5Z M50 42.5L30 105L37.5 98.75L68 128Z M150 42.5L170 105L162.5 98.75L132 128Z"/></g>
+        <g class="piece piece-right" clip-path="url(#cut-right)"><path fill-rule="evenodd" d="M40 15.5H63.75L100 122.5L136.25 15.5H160L190 107.5L148.75 132.5L187.5 146.25L128 138L126 146.25H74L72 138L12.5 146.25L51.25 132.5L10 107.5Z M50 42.5L30 105L37.5 98.75L68 128Z M150 42.5L170 105L162.5 98.75L132 128Z"/></g>
+
+        <!-- 2. Solid logo shown once the pieces lock -->
+        <path class="mark-solid" fill-rule="evenodd" d="M40 15.5H63.75L100 122.5L136.25 15.5H160L190 107.5L148.75 132.5L187.5 146.25L128 138L126 146.25H74L72 138L12.5 146.25L51.25 132.5L10 107.5Z M50 42.5L30 105L37.5 98.75L68 128Z M150 42.5L170 105L162.5 98.75L132 128Z"/>
+
+        <!-- 3. Outline trace + shine sweep -->
+        <path class="mark-trace" pathLength="1" fill-rule="evenodd" d="M40 15.5H63.75L100 122.5L136.25 15.5H160L190 107.5L148.75 132.5L187.5 146.25L128 138L126 146.25H74L72 138L12.5 146.25L51.25 132.5L10 107.5Z M50 42.5L30 105L37.5 98.75L68 128Z M150 42.5L170 105L162.5 98.75L132 128Z"/>
+        <g clip-path="url(#logo-shape)">
+          <rect class="mark-shine" x="-60" y="0" width="50" height="160" fill="url(#shine)"/>
+        </g>
+      </svg>
+
+      <!-- Impact ring when the pieces lock -->
+      <span class="intro-ring"></span>
+
+      <!-- Wordmark: each letter drops in -->
+      <p class="intro-word">
+        <span>M</span><span>N</span><span>A</span><span>T</span><span>H</span><span>A</span><span>N</span><span>V</span><span>Z</span>
+      </p>
+    </div>
+    <button class="intro-skip" type="button">Skip</button>
+  </div>
 
   <!-- Scroll progress bar (width set by js/animations.js) -->
   <div class="scroll-progress" aria-hidden="true"></div>
@@ -229,7 +279,9 @@
   </button>
 
   <script src="js/main.js"></script>
+  <script src="js/intro.js"></script>
   <script src="js/animations.js"></script>
+  <script src="js/data/live-site-files.js"></script>
   <script src="js/file-check.js"></script>
   <script src="js/code-effects.js"></script>
 </body>

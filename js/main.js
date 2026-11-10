@@ -9,6 +9,15 @@
  * ---------------------------------------------------------------
  */
 
+/**
+ * Runs code after the entrance screen (js/intro.js) has finished,
+ * or right away if there is no entrance screen this time.
+ */
+function whenIntroDone(callback) {
+  if (!document.documentElement.classList.contains("is-intro")) return callback();
+  document.addEventListener("intro:done", callback, { once: true });
+}
+
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ---------- Theme ---------- */
@@ -134,7 +143,7 @@ function initTyping() {
     setTimeout(tick, delay);
   }
 
-  setTimeout(tick, 1200);
+  whenIntroDone(() => setTimeout(tick, 1200));
 }
 
 /* ---------- Small details ---------- */

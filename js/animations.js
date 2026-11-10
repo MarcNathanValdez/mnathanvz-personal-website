@@ -109,7 +109,9 @@ function initScramble() {
   // Wait for the web font, so the word widths are measured correctly
   const ready = document.fonts ? document.fonts.ready : Promise.resolve();
   ready.then(() => {
-    document.querySelectorAll("[data-scramble]").forEach((el) => setTimeout(() => scramble(el), 150));
+    whenIntroDone(() => {
+      document.querySelectorAll("[data-scramble]").forEach((el) => setTimeout(() => scramble(el), 150));
+    });
   });
 }
 
